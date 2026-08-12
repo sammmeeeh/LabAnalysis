@@ -1,0 +1,61 @@
+<div class="login-container">
+
+  <div class="login-left">
+    <div class="overlay">
+      <h1>LabAnalysis</h1>
+      <p>Laboratory Management System</p>
+
+      <div class="info">
+        <h2>Welcome Back</h2>
+        <p>
+          Securely access your laboratory dashboard to manage analyses,
+          patients and reports.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-right">
+
+    <div class="login-card">
+
+      <h2>Sign In</h2>
+      <p class="subtitle">
+        Enter your credentials to continue
+      </p>
+
+      <form (ngSubmit)="login()">
+
+        <div class="input-group">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            placeholder="example@gmail.com"
+            required>
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <input
+            type="password"
+            name="motDePasse"
+            [(ngModel)]="motDePasse"
+            placeholder="••••••••"
+            required>
+        </div>
+
+        <button type="submit">
+          Sign In
+        </button>
+
+      </form>
+
+      <p class="message">{{message}}</p>
+
+    </div>
+
+  </div>
+
+</div>

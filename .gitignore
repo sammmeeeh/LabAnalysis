@@ -1,0 +1,23 @@
+# Angular
+LaboFront/node_modules/
+LaboFront/dist/
+LaboFront/.angular/
+
+# Visual Studio
+.vs/
+bin/
+obj/
+
+# Logs
+*.log
+
+# User files
+*.user
+*.suo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
