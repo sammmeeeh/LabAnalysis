@@ -1,0 +1,37 @@
+<app-page-header [title]="config.title" [subtitle]="config.subtitle"></app-page-header>
+<div class="entity-grid">
+  <section class="panel form-panel">
+    <h3>{{ model.id ? 'Modifier' : 'Ajouter' }}</h3>
+    <form (ngSubmit)="save()" #crudForm="ngForm">
+      <div class="form-grid">
+        <div class="field" *ngFor="let field of config.fields">
+          <label>{{ field.label }}</label>
+          <ng-container [ngSwitch]="field.type || 'text'">
+            <textarea *ngSwitchCase="'textarea'" [name]="field.key" [(ngModel)]="model[field.key]" [required]="field.required ?? false"></textarea>
+            <select *ngSwitchCase="'select'" [name]="field.key" [(ngModel)]="model[field.key]" [required]="field.required ?? false">
+              <option [ngValue]="undefined">Selectionner</option>
+              <option *ngFor="let option of options[field.key]" [ngValue]="option.id">{{ option[field.optionLabel || 'nom'] || option.libelle || option.designation || option.raisonSociale }}</option>
+            </select>
+            <input *ngSwitchDefault [type]="field.type || 'text'" [name]="field.key" [(ngModel)]="model[field.key]" [required]="field.required ?? false" [readOnly]="field.readonly ?? false">
+          </ng-container>
+        </div>
+      </div>
+      <div class="actions"><button class="btn btn-primary" type="submit">{{ model.id ? 'Mettre a jour' : 'Ajouter' }}</button><button class="btn btn-secondary" type="button" (click)="reset()">Reinitialiser</button></div>
+    </form>
+  </section>
+  <section class="panel list-panel">
+    <h3>Liste</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th *ngFor="let field of config.fields">{{ field.label }}</th><th>Actions</th></tr></thead>
+        <tbody>
+          <tr *ngFor="let item of items">
+            <td>{{ item.id }}</td>
+            <td *ngFor="let field of config.fields">{{ display(item, field) }}</td>
+            <td class="row-actions"><button class="btn-link" type="button" (click)="edit(item)">Editer</button><button class="btn-link danger" type="button" (click)="remove(item.id)">Supprimer</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

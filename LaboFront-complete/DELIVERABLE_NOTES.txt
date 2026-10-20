@@ -1,0 +1,21 @@
+Frontend Angular livre (NgModule classique, mock data, role-based navigation).
+
+Installation:
+1. npm install
+2. npm start
+
+Comptes de demo:
+- admin@lab.local / Password123!
+- tech@lab.local / Password123!
+- quality@lab.local / Password123!
+- nutrition@lab.local / Password123!
+- client@lab.local / Password123!
+
+Points principaux:
+- Auth mockee (login/register)
+- Dashboard adapte au role
+- Referentiel complet (CRUD mocke)
+- Gestion Clients / ContactsClient / Usines
+- Workflow DemandeTest -> Echantillon -> Resultat -> DecisionQualite -> Rapport
+- Guards simples par role
+- Build verifie avec Angular CLI
